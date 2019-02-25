@@ -4,37 +4,42 @@
 
 <div id="container">
 
+	<form action="<spring:url value="/sneakers/sneakers_search" />" >
+		<input type="text" name="freeText" placeholder="Search by name">
+			<button>Find</button>
+			</form>
+
 	<div class="vertical-menu">
-		<form:form action="filterSneakers" modelAttribute="filter" method="POST">
+		<form action="<spring:url value="/sneakers/filterSearch" />">
 			<table>
 				<th>Filter</th>
 
 				<tr>
 					<td>Brand:</td>
-					<td><select path="brand">
-							<option value="*" default>all</option>
-							<option value="nike">Nike</option>
-							<option value="adidas">Adidas</option>
-							<option value="Puma">Puma</option>
-							<option value="Reebok">Reebok</option>
+					<td><select name="brand">
+							<option value="" default>all</option>
+							<option value="nike">nike</option>
+							<option value="adidas">adidas</option>
+							<option value="Puma">puma</option>
+							<option value="Reebok">reebok</option>
 					</select></td>
 				</tr>
 				<tr>
 					<td>Type</td>
-					<td><select path="type">
-							<option value="*" default>all</option>
-							<option value="sport">Sport</option>
-							<option value="lifestyle">Lifestyle</option>
+					<td><select name="type">
+							<option value="" default>all</option>
+							<option value="sport">sport</option>
+							<option value="lifestyle">lifestyle</option>
 					</select></td>
 				</tr>
 				<tr>
 					<td>Price</td>
 				</tr>
 				<tr>
-					<td><input type="submit" value="Search" /></td>
+					<td><button>Search</button></td>
 				</tr>
 			</table>
-		</form:form>
+		</form>
 	</div>
 
 
