@@ -1,23 +1,22 @@
-<%@ include file="header.jsp"%>
-<%@ include file="navigation.jsp"%>
+<%@ include file="header.jspf"%>
+<%@ include file="navigation.jspf"%>
 
 
 <div id="container">
-
-	<form action="<spring:url value="/sneakers/sneakers_search" />" >
-		<input type="text" name="freeText" placeholder="Search by name">
+	<div class="vertical-list">
+		<form action="<spring:url value="/sneakers/sneakers_search" />">
+			<input type="text" name="freeText" placeholder="Search by name" class="freeText">
 			<button>Find</button>
-			</form>
+		</form>
 
-	<div class="vertical-menu">
+
 		<form action="<spring:url value="/sneakers/filterSearch" />">
-			<table>
-				<th>Filter</th>
-
+			<table id="filter-table">
+				<th><lable>Filter</lable></th>
 				<tr>
-					<td>Brand:</td>
+					<td><lable>Brand</lable></td>
 					<td><select name="brand">
-							<option value="" default>all</option>
+							<option value="%" default>all</option>
 							<option value="nike">nike</option>
 							<option value="adidas">adidas</option>
 							<option value="Puma">puma</option>
@@ -25,9 +24,9 @@
 					</select></td>
 				</tr>
 				<tr>
-					<td>Type</td>
+					<td><lable>Type</lable></td>
 					<td><select name="type">
-							<option value="" default>all</option>
+							<option value="%" default>all</option>
 							<option value="sport">sport</option>
 							<option value="lifestyle">lifestyle</option>
 					</select></td>
@@ -42,8 +41,8 @@
 		</form>
 	</div>
 
-
-	<table class="w3-table w3-striped">
+	<div class="sneakers-div">
+	<table class="list-sneakers">
 		<tr>
 			<th>Brand</th>
 			<th>Type</th>
@@ -61,6 +60,6 @@
 			</tr>
 		</c:forEach>
 	</table>
+	</div>
 </div>
-</body>
-</html>
+<%@ include file="footer.jspf"%>

@@ -1,0 +1,17 @@
+body{
+
+}
+
+.login{
+	float: right;
+
+  position: relative;
+  left: -50%; /* or right 50% */
+  text-align: left;
+}
+h2{
+	text-align: center;
+}
+.login-form table td,th{
+	padding: 10px;
+}

@@ -1,28 +1,66 @@
-body{
+body {
 	background-color: #a6d9d9;
-	font-style: Arial, Helvetica, sans-serif;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 17px;
+	margin: auto;
 }
-
+div{
+	padding: 5px;
+}
+button{
+	background-color: #333; /* Green */
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  width: 70px;
+}
+button:hover {
+  background-color: #111;
+}
 /* ---- list-sneakers.jsp css */
 
-.vertical-menu {
-  width: 200px; /* Set a width if you like */
+.vertical-list {
+	width: 250px; /* Set a width if you like */
+	color: black;
+	padding: 10px;
+	float: left;
 }
 
-.vertical-menu a {
-  background-color: #eee; /* Grey background color */
-  color: black; /* Black text color */
-  display: block; /* Make the links appear below each other */
-  padding: 12px; /* Add some padding */
-  text-decoration: none; /* Remove underline from links */
+select {
+	width: 100px;
+	height: 25px;
+	text-align: center;
+	font-size:17px;
 }
 
-.vertical-menu a:hover {
-  background-color: #ccc; /* Dark grey background on mouse-over */
+#filter-select th, td {
+	padding: 7px;
 }
 
-.vertical-menu a.active {
-  background-color: #4CAF50; /* Add a green color to the "active/current" link */
-  color: white;
+.sneakers-div {
+	width: 100%;
+}
+.freeText{
+	height: 25px;
 }
 /* ----------------------------------------------------- */
+/* ------------- footer.jsp ---------------------------- */
+.footer {
+	height: 40px;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	background-color: #333;
+	text-align: center;
+	color: white;
+}
+
+.footer p {
+	font-style: italic;
+	font-size: 16px;
+	color: white;
+	text-align: center;
+}

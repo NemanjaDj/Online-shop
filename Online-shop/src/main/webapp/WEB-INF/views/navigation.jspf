@@ -1,0 +1,10 @@
+<div class="navbar">
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="/sneakers/">Sneakers</a></li>
+  <li><a href="#markets">Markets</a></li>
+  <li><a href="#about">News</a></li>
+  <li style="float: right"><a href="/login/">Log in</a></li>
+  <li style="float: right"><a href="#userpage">User name</a></li>
+</ul>
+</div>

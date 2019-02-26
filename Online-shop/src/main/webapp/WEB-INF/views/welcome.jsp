@@ -1,5 +1,5 @@
-<%@ include file="header.jsp" %>
-<%@ include file="navigation.jsp" %>
+<%@ include file="header.jspf" %>
+<%@ include file="navigation.jspf" %>
 
 
 <div class="container">
@@ -26,9 +26,8 @@ function carousel() {
   myIndex++;
   if (myIndex > x.length) {myIndex = 1}    
   x[myIndex-1].style.display = "block";  
-  setTimeout(carousel, 2500); // Change image every 2.5 seconds
+  setTimeout(carousel, 2000); // Change image every 2 seconds
 }
 </script>
 
-</body>
-</html>
+<%@ include file="footer.jspf" %>
