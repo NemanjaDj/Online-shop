@@ -2,11 +2,11 @@
 <%@ include file="navigation.jspf"%>
 
 
-<div id="container">
+<div class="container">
 	<div class="vertical-list">
 		<form action="<spring:url value="/sneakers/sneakers_search" />">
 			<input type="text" name="freeText" placeholder="Search by name" class="freeText">
-			<button>Find</button>
+			<button class="light-button">Find</button>
 		</form>
 
 
@@ -16,7 +16,7 @@
 				<tr>
 					<td><lable>Brand</lable></td>
 					<td><select name="brand">
-							<option value="%" default>all</option>
+							<option value="all" default>all</option>
 							<option value="nike">nike</option>
 							<option value="adidas">adidas</option>
 							<option value="Puma">puma</option>
@@ -26,7 +26,7 @@
 				<tr>
 					<td><lable>Type</lable></td>
 					<td><select name="type">
-							<option value="%" default>all</option>
+							<option value="all" default>all</option>
 							<option value="sport">sport</option>
 							<option value="lifestyle">lifestyle</option>
 					</select></td>
@@ -35,10 +35,11 @@
 					<td>Price</td>
 				</tr>
 				<tr>
-					<td><button>Search</button></td>
+					<td><button class="light-button">Search</button></td>
 				</tr>
 			</table>
 		</form>
+		<a href="/sneakers/addSneakers">Add new Sneakers</a>
 	</div>
 
 	<div class="sneakers-div">
@@ -62,4 +63,7 @@
 	</table>
 	</div>
 </div>
+
+
+
 <%@ include file="footer.jspf"%>

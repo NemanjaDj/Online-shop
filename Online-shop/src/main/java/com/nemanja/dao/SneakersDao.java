@@ -17,5 +17,9 @@ public interface SneakersDao extends JpaRepository<Sneakers, Integer>{
 	@Query("SELECT s FROM Sneakers s WHERE LOWER(s.brand) = LOWER(:brand) AND LOWER(s.type) = LOWER(:type)")
 	public List<Sneakers> filterSearch(@Param("brand") String brand,@Param("type") String type);
 	
-	//public List<Sneakers> filterSneakers(String brand, String type);
+	@Query("SELECT s FROM Sneakers s WHERE LOWER(s.brand) = LOWER(:brand)")
+	public List<Sneakers> filterBrand(@Param("brand") String brand);
+	
+	@Query("SELECT s FROM Sneakers s WHERE LOWER(s.type) = LOWER(:type)")
+	public List<Sneakers> filterType(@Param("type") String type);
 }

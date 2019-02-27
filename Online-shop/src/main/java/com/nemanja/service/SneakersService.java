@@ -9,7 +9,8 @@ public interface SneakersService {
 	public List<Sneakers> getSneakers();
 	
 	public List<Sneakers> SearchByName(String freeText);
-	//public List<Sneakers> filterSneakers(String brand, String type);
 
 	public Object filterSearch(String brand, String type);
+
+	public void addSneakers(Sneakers newSneakers);
 }

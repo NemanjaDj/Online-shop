@@ -2,12 +2,12 @@ package com.nemanja.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -45,7 +45,16 @@ public class SneakersController {
 		return "list-sneakers";
 	}
 	
-	
-	
+	@PostMapping("/addSneakers")
+	public String addSneakers(@ModelAttribute("newSneakers") Sneakers newSneakers) {
+		sneakersService.addSneakers(newSneakers);
+		return "redirect:/sneakers/";
+	}
+
+	@GetMapping("/addSneakers")
+	public String newSneakersForm() {
+		return "add-sneakers";
+	}
 	
 }
+
