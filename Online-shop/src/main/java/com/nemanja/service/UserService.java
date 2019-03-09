@@ -6,6 +6,9 @@ import com.nemanja.entity.User;
 
 public interface UserService {
 	public List<User> findAll();
-
+	
+	public User findByUsername(String username);
+	
 	public void saveUser(User user);
+
 }

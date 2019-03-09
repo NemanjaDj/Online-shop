@@ -1,12 +1,12 @@
 <%@ include file="header.jspf" %>
 <%@ include file="navigation.jspf" %>
 <div class="login">
-<form action="saveUser" modelAttribute="user" method="post" class="login-form">
+<form:form action="saveUser" modelAttribute="user" method="post" class="login-form">
 <h2>Registration</h2>
 	<table>
 		<tr>
 			<td><lable>Name: </lable></td>
-			<td><input type="text" name="name" placeholder=" name"/></td>
+			<td><input type="text" name="username" placeholder=" username"/></td>
 		</tr>
 		<tr>
 			<td><label>Email:</label></td>
@@ -21,6 +21,6 @@
 		</tr>
 
 	</table>
-</form>
+</form:form>
 </div>
 <%@ include file="footer.jspf"%>

@@ -1,5 +1,6 @@
 package com.nemanja.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,8 +13,11 @@ public class Sneakers {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	@Column(name="brand",length=45)
 	private String brand;
+	@Column(name="name",length=45)
 	private String name;
+	@Column(name="type",length=45)
 	private String type;
 	private int price;
 	

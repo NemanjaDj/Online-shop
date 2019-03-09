@@ -23,6 +23,11 @@ public class UserServiceImpl implements UserService {
 	public void saveUser(User user) {
 		userdao.save(user);
 	}
-	
+
+	@Override
+	public User findByUsername(String username) {
+		return userdao.findByUsername(username);
+	}
+
 	
 }

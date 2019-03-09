@@ -1,23 +1,27 @@
 <%@ include file="header.jspf" %>
 <%@ include file="navigation.jspf" %>
 <div class="login">
-<form class="login-form">
+<form:form action="${pageContext.request.contextPath}/authenticateTheUser" class="login-form" method="POST">
 <h2>Login</h2>
+<c:if test="${param.error != null}">
+	<i style="color: red">Sorry! You entered invalid username or password.
+	Reason :  ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</i>
+</c:if>
 	<table>
 		<tr>
-			<td>Email:</td>
-			<td><input type="text" placeholder=" enter email"/></td>
+			<td>Username:</td>
+			<td><input type="text" name="username" placeholder=" enter username"/></td>
 		</tr>
 		<tr>
 			<td>Password:</td>
-			<td><input type="password" placeholder=" enter password"/></td>
+			<td><input type="password" name="password" placeholder=" enter password"/></td>
 		</tr>
 		<tr>
-			<td><button>Log in</button></td>
+			<td><input type="submit" value="Login"></td>
 		</tr>
 
 	</table>
-</form>
+</form:form>
 <a href="/login/registration">Registration</a>
 </div>
 

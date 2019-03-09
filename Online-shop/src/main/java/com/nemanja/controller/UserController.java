@@ -17,8 +17,7 @@ public class UserController {
 	private UserServiceImpl userService;
 
 	@RequestMapping("/users")
-	public List<User> welcome() {
+	public List<User> users() {
 		return userService.findAll();
 	}
-
 }
