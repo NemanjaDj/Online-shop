@@ -1,13 +1,31 @@
+<%@ include file="header.jspf"%>
 <div class="navbar">
-<ul>
-  <li><a href="/">Home</a></li>
-  <li><a href="/sneakers/">Sneakers</a></li>
-  <li><a href="#markets">Markets</a></li>
-  <li><a href="#about">News</a></li>
-  <form:form action="${pageContext.request.contextPath}/logout" method="POST">
-  <input type="submit" value="logout" style="float: right"/>
-  </form:form>
-  <li style="float: right"><a href="/login/">Log in</a></li>
-  <li style="float: right"><a href="#userpage">User page</a></li>
-</ul>
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li><a href="/sneakers/">Sneakers</a></li>
+		<li><a href="#markets">Markets</a></li>
+		<li><a href="#about">News</a></li>
+
+		<c:if test="${username == 'anonymousUser'}">
+
+			<li style="float: right"><a href="/login/">Log in</a></li>
+		</c:if>
+
+		<c:if test="${username ne 'anonymousUser'}">
+		<li style="float: right">
+			<form:form action="${pageContext.request.contextPath}/logout"
+				method="POST">
+				<input type="submit" value="Logout" class="logout_button" />
+			</form:form>
+			</li>
+		</c:if>
+		
+		<c:if test="${username ne 'anonymousUser' or username == 'null'}">
+			<li style="float: right"><a href="/userpage"> <c:out
+						value="${username}'s
+				page" />
+			</a></li>
+		</c:if>
+		
+	</ul>
 </div>

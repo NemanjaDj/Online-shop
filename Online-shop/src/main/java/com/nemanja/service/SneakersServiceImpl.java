@@ -29,16 +29,16 @@ public class SneakersServiceImpl implements SneakersService {
 	}
 
 	@Override
-	public List<Sneakers> filterSearch(String brand, String type) {
+	public List<Sneakers> filterSearch(String brand, String type, String price) {
 		if(brand.equals("all")) {
 			if(type.equals("all"))
-				return sneakersDao.findAll();
+				return sneakersDao.filterPrice(price);
 			else
-				return sneakersDao.filterType(type);
+				return sneakersDao.filterType(type, price);
 		} if(type.equals("all"))
-			return sneakersDao.filterBrand(brand);
+			return sneakersDao.filterBrand(brand, price);
 			
-		return sneakersDao.filterSearch(brand, type);
+		return sneakersDao.filterSearch(brand, type, price);
 	}
 
 	@Override
@@ -46,5 +46,5 @@ public class SneakersServiceImpl implements SneakersService {
 		sneakersDao.save(newSneakers);
 		
 	}
-	
+
 }

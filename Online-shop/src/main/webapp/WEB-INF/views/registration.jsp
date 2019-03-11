@@ -1,23 +1,31 @@
 <%@ include file="header.jspf" %>
-<%@ include file="navigation.jspf" %>
 <div class="login">
 <form:form action="saveUser" modelAttribute="user" method="post" class="login-form">
 <h2>Registration</h2>
 	<table>
 		<tr>
-			<td><lable>Name: </lable></td>
-			<td><input type="text" name="username" placeholder=" username"/></td>
+			<td><lable>Username: </lable></td>
+			</tr>
+			<tr>
+			<td><input type="text" name="username" placeholder=" username" class="logininput"/></td>
 		</tr>
 		<tr>
 			<td><label>Email:</label></td>
-			<td><input type="text" name="email" placeholder=" email"/></td>
+			</tr>
+			<tr>
+			<td><input type="text" name="email" placeholder=" email" class="logininput"/></td>
 		</tr>
 		<tr>
 			<td><label>Password:</label></td>
-			<td><input type="text" name="password" placeholder=" password"/></td>
+			</tr>
+			<tr>
+			<td><input type="text" name="password" placeholder=" password" class="logininput"/></td>
 		</tr>
 		<tr>
-			<td><button>Register</button></td>
+			<td>
+			<button style="float: right">Register</button>
+			<input type="button" value="Back" onclick="history.go(-1)" class="buttons">
+			</td>
 		</tr>
 
 	</table>

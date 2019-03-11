@@ -10,7 +10,7 @@ public interface SneakersService {
 	
 	public List<Sneakers> SearchByName(String freeText);
 
-	public Object filterSearch(String brand, String type);
+	public Object filterSearch(String brand, String type, String price);
 
 	public void addSneakers(Sneakers newSneakers);
 }

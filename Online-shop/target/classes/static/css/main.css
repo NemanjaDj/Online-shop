@@ -1,4 +1,4 @@
-html, body{
+html, body {
 	height: 90%;
 }
 
@@ -8,33 +8,45 @@ body {
 	font-size: 17px;
 	margin: auto;
 }
-div{
+
+div {
 	padding: 5px;
 }
-.container{
+
+.container {
 	height: 100%;
 }
-button{
-	background-color: #333; /* Green */
-  border: none;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 4px;
-  width: 70px;
+
+button {
+	background-color: #333;
+	border: none;
+	color: white;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 4px;
+	width: 70px;
 }
-.light-button{
+
+.light-button {
 	background-color: #bac5d6;
 }
-button:hover {
-  background-color: #111;
-}
-/* ---- list-sneakers.jsp css */
 
-.vertical-list {
+button:hover {
+	background-color: #111;
+}
+
+/* ------------  welcome page  ------------------------ */
+#welcome_user {
+	font-size: 25px;
+}
+
+/* ------------  end welcome page  ------------------------ */
+/* ---- list-sneakers.jsp css */
+.vertical_list {
+	content-align: center;
 	height: 100%;
-	width: 230px; /* Set a width if you like */
+	width: 300px;
 	color: white;
 	padding: 10px;
 	float: left;
@@ -42,22 +54,53 @@ button:hover {
 }
 
 select {
-	width: 100px;
-	height: 25px;
+	width: 130px;
+	height: 30px;
 	text-align: center;
-	font-size:17px;
+	font-size: 17px;
 }
 
 #filter-select th, td {
-	padding: 7px;
+	padding: 9px;
 }
 
 .sneakers-div {
 	width: 100%;
 }
-.freeText{
+
+.freeText {
 	height: 25px;
+	width: 210px;
 }
+
+.card_buttons {
+	background-color: #333;
+	border: none;
+	color: white;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 4px;
+	width: 120px;
+}
+
+.card_buttons:hover {
+	background-color: #111;
+}
+
+.slider {
+	-webkit-appearance: none; /* change default slide line */
+	appearance: none;
+	width: 100%; 
+	height: 25px; 
+	background: #bac5d6; 
+	outline: none;
+	opacity: 0.7; /* lower focus, so when hover is better focused */
+	}
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
 /* ----------------------------------------------------- */
 /* ------------- footer.jsp ---------------------------- */
 .footer {

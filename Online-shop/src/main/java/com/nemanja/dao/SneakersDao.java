@@ -14,12 +14,15 @@ public interface SneakersDao extends JpaRepository<Sneakers, Integer>{
 	@Query("SELECT s FROM Sneakers s WHERE LOWER(s.name) = LOWER(:freeText)")
     public List<Sneakers> SearchByName(@Param("freeText") String freeText);
 	
-	@Query("SELECT s FROM Sneakers s WHERE LOWER(s.brand) = LOWER(:brand) AND LOWER(s.type) = LOWER(:type)")
-	public List<Sneakers> filterSearch(@Param("brand") String brand,@Param("type") String type);
+	@Query("SELECT s FROM Sneakers s WHERE LOWER(s.brand) = LOWER(:brand) AND LOWER(s.type) = LOWER(:type) AND LOWER(s.price)<= LOWER(:price) ")
+	public List<Sneakers> filterSearch(@Param("brand") String brand,@Param("type") String type, @Param("price") String price);
 	
-	@Query("SELECT s FROM Sneakers s WHERE LOWER(s.brand) = LOWER(:brand)")
-	public List<Sneakers> filterBrand(@Param("brand") String brand);
+	@Query("SELECT s FROM Sneakers s WHERE LOWER(s.brand) = LOWER(:brand)AND LOWER(s.price)<= LOWER(:price)")
+	public List<Sneakers> filterBrand(@Param("brand") String brand, @Param("price") String price);
 	
-	@Query("SELECT s FROM Sneakers s WHERE LOWER(s.type) = LOWER(:type)")
-	public List<Sneakers> filterType(@Param("type") String type);
+	@Query("SELECT s FROM Sneakers s WHERE LOWER(s.type) = LOWER(:type) AND LOWER(s.price)<= LOWER(:price)")
+	public List<Sneakers> filterType(@Param("type") String type, @Param("price") String price);
+	
+	@Query("SELECT s FROM Sneakers s WHERE LOWER(s.price)<= LOWER(:price)")
+	public List<Sneakers> filterPrice(@Param("price") String price);
 }
