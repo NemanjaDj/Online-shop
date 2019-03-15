@@ -73,7 +73,7 @@ select {
 	width: 210px;
 }
 
-.card_buttons {
+.cart_buttons {
 	background-color: #333;
 	border: none;
 	color: white;
@@ -84,7 +84,7 @@ select {
 	width: 120px;
 }
 
-.card_buttons:hover {
+.cart_buttons:hover {
 	background-color: #111;
 }
 

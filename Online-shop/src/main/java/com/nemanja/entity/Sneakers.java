@@ -1,10 +1,15 @@
 package com.nemanja.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,8 +26,14 @@ public class Sneakers {
 	private String type;
 	private int price;
 	
+	@ManyToMany(mappedBy = "sneakers",
+			cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+    private Set<User> users = new HashSet<>();
+	
 	//Constructors
 	
+	
+
 	public Sneakers() {}
 
 	public Sneakers(String brand, String name, String type, int price) {
@@ -73,9 +84,17 @@ public class Sneakers {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
-	// toString method
 		
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
+	
+	// toString method
+
 	@Override
 	public String toString() {
 		return "Sneakers [id=" + id + ", brand=" + brand + ", name=" + name + ", type=" + type + ", price=" + price

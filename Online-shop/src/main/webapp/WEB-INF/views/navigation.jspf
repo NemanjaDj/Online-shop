@@ -3,14 +3,13 @@
 	<ul>
 		<li><a href="/">Home</a></li>
 		<li><a href="/sneakers/">Sneakers</a></li>
-		<li><a href="#markets">Markets</a></li>
-		<li><a href="#about">News</a></li>
 
+		<!-- if user is not logged in show log in link -->
 		<c:if test="${username == 'anonymousUser'}">
-
 			<li style="float: right"><a href="/login/">Log in</a></li>
 		</c:if>
 
+		<!-- if user is logged in show log out link -->
 		<c:if test="${username ne 'anonymousUser'}">
 		<li style="float: right">
 			<form:form action="${pageContext.request.contextPath}/logout"
@@ -20,6 +19,7 @@
 			</li>
 		</c:if>
 		
+		<!-- if user is logged in show user's page link -->
 		<c:if test="${username ne 'anonymousUser' or username == 'null'}">
 			<li style="float: right"><a href="/userpage"> <c:out
 						value="${username}'s

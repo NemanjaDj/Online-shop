@@ -9,7 +9,7 @@
 			<td><input type="text" name="brand" placeholder=" brand"/></td>
 		</tr>
 		<tr>
-			<td><lable>Name: </lable></td>
+			<td><label>Name: </label></td>
 			<td><input type="text" name="name" placeholder=" name"/></td>
 		</tr>
 		<tr>
@@ -21,7 +21,7 @@
 			<td><input type="text" name="price" placeholder=" price"/></td>
 		</tr>
 		<tr>
-			<td><button>Confirm</button></td>
+			<td><input type="submit" value="Confirm" class="buttons"></td>
 		</tr>
 
 	</table>

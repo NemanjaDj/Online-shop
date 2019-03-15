@@ -11,7 +11,9 @@ import com.nemanja.entity.Sneakers;
 public interface SneakersDao extends JpaRepository<Sneakers, Integer>{
 	public List<Sneakers> findAll();
 	
-	@Query("SELECT s FROM Sneakers s WHERE LOWER(s.name) = LOWER(:freeText)")
+	public Sneakers findByName(String name);
+	
+	@Query("SELECT s FROM Sneakers s WHERE LOWER(s.name) = LOWER(:freeText) or s.name like %:freeText%")
     public List<Sneakers> SearchByName(@Param("freeText") String freeText);
 	
 	@Query("SELECT s FROM Sneakers s WHERE LOWER(s.brand) = LOWER(:brand) AND LOWER(s.type) = LOWER(:type) AND LOWER(s.price)<= LOWER(:price) ")

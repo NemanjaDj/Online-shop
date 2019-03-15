@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import com.nemanja.dao.SneakersDao;
 import com.nemanja.entity.Sneakers;
@@ -22,9 +21,6 @@ public class SneakersServiceImpl implements SneakersService {
 
 	@Override
 	public List<Sneakers> SearchByName(String freeText) {
-		freeText=freeText.replaceAll("\\s+","");
-		if(freeText.equals(""))
-			return sneakersDao.findAll();
 		return sneakersDao.SearchByName(freeText);
 	}
 
@@ -45,6 +41,11 @@ public class SneakersServiceImpl implements SneakersService {
 	public void addSneakers(Sneakers newSneakers) {
 		sneakersDao.save(newSneakers);
 		
+	}
+
+	@Override
+	public Sneakers findByName(String name) {
+		return sneakersDao.findByName(name);
 	}
 
 }
