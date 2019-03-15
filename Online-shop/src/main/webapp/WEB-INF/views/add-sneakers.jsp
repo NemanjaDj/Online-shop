@@ -21,6 +21,10 @@
 			<td><input type="text" name="price" placeholder=" price"/></td>
 		</tr>
 		<tr>
+			<td><label>image:</label></td>
+			<td><input type="text" name="image" placeholder=" image"/></td>
+		</tr>
+		<tr>
 			<td><input type="submit" value="Confirm" class="buttons"></td>
 		</tr>
 

@@ -34,5 +34,6 @@ public class UserServiceImpl implements UserService {
 	public User findById(int id) {
 		return userdao.findById(id);
 	}
+
 	
 }

@@ -54,6 +54,7 @@
 	<form:form action="${pageContext.request.contextPath}/sneakers/" method="POST">
 		<table class="list-sneakers">
 			<tr>
+				<th></th>
 				<th>Brand</th>
 				<th>Type</th>
 				<th>name</th>
@@ -63,6 +64,7 @@
 			<c:forEach var="tempSneakers" items="${sneakers}">
 
 				<tr>
+					<td><img src="/images/${tempSneakers.image}" class="sneakersimages"/></td>
 					<td>${tempSneakers.brand}</td>
 					<td>${tempSneakers.type}</td>
 					<td>${tempSneakers.name}</td>

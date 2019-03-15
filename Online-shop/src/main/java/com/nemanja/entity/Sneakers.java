@@ -13,28 +13,30 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="sneakers")
+@Table(name = "sneakers")
 public class Sneakers {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name="brand",length=45)
+	@Column(name = "brand", length = 45)
 	private String brand;
-	@Column(name="name",length=45)
+	@Column(name = "name", length = 45)
 	private String name;
-	@Column(name="type",length=45)
+	@Column(name = "type", length = 45)
 	private String type;
+	@Column(name = "image", length = 45)
+	private String image;
+	@Column(name = "price")
 	private int price;
-	
-	@ManyToMany(mappedBy = "sneakers",
-			cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-    private Set<User> users = new HashSet<>();
-	
-	//Constructors
-	
-	
 
-	public Sneakers() {}
+	@ManyToMany(mappedBy = "sneakers", cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+			CascadeType.REFRESH })
+	private Set<User> users = new HashSet<>();
+
+	// Constructors
+
+	public Sneakers() {
+	}
 
 	public Sneakers(String brand, String name, String type, int price) {
 		this.brand = brand;
@@ -43,8 +45,24 @@ public class Sneakers {
 		this.price = price;
 	}
 
-	//Getters & Setters
-	
+	public Sneakers(String brand, String name, String type, int price, String image) {
+		this.brand = brand;
+		this.name = name;
+		this.type = type;
+		this.price = price;
+		this.image = image;
+	}
+
+	// Getters & Setters
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -84,7 +102,7 @@ public class Sneakers {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-		
+
 	public Set<User> getUsers() {
 		return users;
 	}
@@ -92,7 +110,7 @@ public class Sneakers {
 	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
-	
+
 	// toString method
 
 	@Override

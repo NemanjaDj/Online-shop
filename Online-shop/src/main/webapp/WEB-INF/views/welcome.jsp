@@ -16,10 +16,9 @@
 
 	<!-- Slide show  -->
 
-	<div class="w3-content w3-section" style="max-width: 500px">
-		<img class="mySlides" src="images/lebronXVI-1.jpg" style="width: 100%">
-		<img class="mySlides" src="images/lebron15-ashes.jpg"
-			style="width: 100%">
+	<div class="slideshow">
+		<img class="mySlides" src="images/nike_lebronXVI.jpg" >
+		<img class="mySlides" src="images/nike_lebronXVAshes.jpg" >
 	</div>
 </div>
 

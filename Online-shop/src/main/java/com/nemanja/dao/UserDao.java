@@ -18,4 +18,5 @@ public interface UserDao extends JpaRepository<User, Integer>{
 	
 	@Query("SELECT r.userRole FROM UserRole r WHERE r.user.getUsername()= :username")
 	public List<String> findUserRoleByUsername(@Param("username")String username);
+	
 }
