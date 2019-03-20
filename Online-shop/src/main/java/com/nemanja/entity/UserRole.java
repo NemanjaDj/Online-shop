@@ -1,9 +1,9 @@
 package com.nemanja.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -11,10 +11,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="user_role")
-public class UserRole {
+public class UserRole implements Serializable{
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int roleid;
 	@ManyToOne
 	@JoinColumn(name = "username")
 	private User user;
@@ -54,6 +52,16 @@ public class UserRole {
 	@Override
 	public String toString() {
 		return "UserRole [user=" + user + ", userRole=" + userRole + "]";
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return super.equals(obj);
+	}
+
+	@Override
+	public int hashCode() {
+		return super.hashCode();
 	}
 	
 }

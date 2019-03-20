@@ -31,7 +31,7 @@
 			</tr>
 			<tr>
 				<td>
-				<input type="button" value="Back" onclick="history.go(-1)" class="buttons">
+				<a type="button"  href="/" class="buttons" style="float: left">Back</a>
 				<button style="float: right">Login</button>
 				</td>
 			</tr>

@@ -50,16 +50,15 @@ public class SneakersController {
 	@RequestMapping(value="/", method=RequestMethod.POST, params={"sneakersname"})
 	public String addToCart(@RequestParam("sneakersname") String sneakersname) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String username = auth.getName(); // get logged in username
+		String name = auth.getName(); // get logged in username
 
 		
-			User user = userservice.findByUsername(username.toLowerCase());
+			User user = userservice.findByUsername(name.toLowerCase());
 			Sneakers tempsneakers = sneakersService.findByName(sneakersname);
 			Set<Sneakers> userSneakers = user.getSneakers();
 			userSneakers.add(tempsneakers);
 			user.setSneakers(userSneakers);
 			userservice.saveUser(user);
-		
 		return "redirect:/sneakers/";
 	}
 

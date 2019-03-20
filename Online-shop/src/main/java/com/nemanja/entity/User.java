@@ -6,8 +6,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -19,8 +17,6 @@ import javax.persistence.Table;
 @Table(name = "user")
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
 	@Column(name = "username", length = 45)
 	private String username;
 	@Column(name = "email", length = 45)
@@ -33,33 +29,33 @@ public class User {
 	private Set<UserRole> userRole = new HashSet<>();
 
 	@ManyToMany(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-	@JoinTable(name = "user_cart", joinColumns = { @JoinColumn(name = "userid") }, inverseJoinColumns = {
+	@JoinTable(name = "user_cart", joinColumns = { @JoinColumn(name = "username") }, inverseJoinColumns = {
 			@JoinColumn(name = "sneakersid") })
 	Set<Sneakers> sneakers = new HashSet<>();
 
 	// Constructors
 
-	public User() {
-	}
-	public User(String name, String email, String password,Set<Sneakers> sneakers) {
-		this.username = name;
-		this.email = email;
-		this.password = password;
-		this.sneakers = sneakers;
-	}
+	public User() {}
 
-	public User(String name, String email, String password, boolean enabled) {
-		this.username = name;
-		this.email = email;
-		this.password = password;
-		this.enabled = enabled;
-	}
-
-	public User(String username, String email, String password, boolean enabled, Set<UserRole> userRole) {
+	public User(String username, String email, String password, Set<UserRole> userRole) {
 		this.username = username;
 		this.email = email;
 		this.password = password;
-		this.enabled = enabled;
+		this.enabled = true;
+		this.userRole = userRole;
+	}
+	public User(String username, String password, Set<Sneakers> sneakers, String email) {
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.enabled = true;
+		this.sneakers = sneakers;
+	}
+	
+	public User(String username, String password, Set<UserRole> userRole) {
+		this.username = username;
+		this.password = password;
+		this.enabled = true;
 		this.userRole = userRole;
 	}
 
@@ -68,7 +64,6 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.enabled = true;
-		this.userRole.add(new UserRole(new User(this.username, this.email, this.password, true), "user"));
 	}
 
 	// Getters & Setters
@@ -97,13 +92,6 @@ public class User {
 		this.password = password;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public boolean isEnabled() {
 		return enabled;
@@ -133,6 +121,6 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + username + ", email=" + email + ", password=" + password + "]";
+		return "User [ name=" + username + ", email=" + email + ", password=" + password + "]";
 	}
 }

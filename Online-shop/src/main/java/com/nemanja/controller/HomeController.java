@@ -40,9 +40,9 @@ public class HomeController {
 	@GetMapping("/userpage")
 	public String userPage(Model themodel) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String username = auth.getName(); // get logged in username
-		themodel.addAttribute("username", username);
-		User user = userservice.findByUsername(username.toLowerCase());
+		String name = auth.getName(); // get logged in username
+		themodel.addAttribute("username", name);
+		User user = userservice.findByUsername(name.toLowerCase());
 		Set<Sneakers> usersneakers = user.getSneakers();
 		themodel.addAttribute("usercardsneakers", usersneakers);
 		return "user-page";
