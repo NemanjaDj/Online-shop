@@ -7,9 +7,8 @@ Web application for sneakers sale. Application has welcome page, sneakers page w
 
 
 In develop:
-Spring security login from database (Problem with (myCustom)UserDetailsServiceImpl class),
 Set user roles: Admin, User,
 User will be able to edit his profile informations,
-Redesign list of sneakers (css),
+Redesign views (css).
 
 
