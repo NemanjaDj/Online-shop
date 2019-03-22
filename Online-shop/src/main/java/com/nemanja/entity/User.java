@@ -12,20 +12,26 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "user")
 public class User {
 	@Id
 	@Column(name = "username", length = 45)
+	@Size(min = 4, max = 16, message = "username size must be between 4 and 16")
 	private String username;
 	@Column(name = "email", length = 45)
+	@NotEmpty(message = "Please enter email")
 	private String email;
 	@Column(name = "password", length = 120)
+	@Size(min = 4, max = 60, message = "password size must be between 4 and 16")
 	private String password;
 	@Column(name = "enabled")
 	private boolean enabled;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	@OneToMany(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+			CascadeType.REFRESH }, mappedBy = "user")
 	private Set<UserRole> userRole = new HashSet<>();
 
 	@ManyToMany(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
@@ -35,7 +41,8 @@ public class User {
 
 	// Constructors
 
-	public User() {}
+	public User() {
+	}
 
 	public User(String username, String email, String password, Set<UserRole> userRole) {
 		this.username = username;
@@ -44,6 +51,7 @@ public class User {
 		this.enabled = true;
 		this.userRole = userRole;
 	}
+
 	public User(String username, String password, Set<Sneakers> sneakers, String email) {
 		this.username = username;
 		this.email = email;
@@ -51,7 +59,7 @@ public class User {
 		this.enabled = true;
 		this.sneakers = sneakers;
 	}
-	
+
 	public User(String username, String password, Set<UserRole> userRole) {
 		this.username = username;
 		this.password = password;
@@ -91,7 +99,6 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 
 	public boolean isEnabled() {
 		return enabled;

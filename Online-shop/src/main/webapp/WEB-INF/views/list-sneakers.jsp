@@ -44,8 +44,6 @@
 				</tr>
 			</table>
 		</form>
-		<a href="/sneakers/addSneakers">Add new Sneakers</a>
-		<p>${proba}</p>
 	</div>
 
 	<!-- List of sneakers - table -->

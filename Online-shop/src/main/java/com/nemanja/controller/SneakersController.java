@@ -86,19 +86,4 @@ public class SneakersController {
 		return "list-sneakers";
 	}
 
-	@PostMapping("/addSneakers")
-	public String addSneakers(@ModelAttribute("newSneakers") Sneakers newSneakers) {
-		sneakersService.addSneakers(newSneakers);
-		return "redirect:/sneakers/";
-	}
-
-	@GetMapping("/addSneakers")
-	public String newSneakersForm(Model themodel) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String name = auth.getName(); // get logged in username
-
-		themodel.addAttribute("username", name);
-		return "add-sneakers";
-	}
-
 }

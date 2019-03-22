@@ -4,6 +4,10 @@
 		<li><a href="/">Home</a></li>
 		<li><a href="/sneakers/">Sneakers</a></li>
 
+		<c:if test="${username == 'admin'}">
+			<li><a href="/adminRoom/">Admin room</a></li>
+		</c:if>
+
 		<!-- if user is not logged in show log in link -->
 		<c:if test="${username == 'anonymousUser'}">
 			<li style="float: right"><a href="/login/">Log in</a></li>
@@ -11,14 +15,12 @@
 
 		<!-- if user is logged in show log out link -->
 		<c:if test="${username ne 'anonymousUser'}">
-		<li style="float: right">
-			<form:form action="${pageContext.request.contextPath}/logout"
-				method="POST">
-				<input type="submit" value="Logout" class="logout_button" />
-			</form:form>
-			</li>
+			<li style="float: right"><form:form
+					action="${pageContext.request.contextPath}/logout" method="POST">
+					<input type="submit" value="Logout" class="logout_button" />
+				</form:form></li>
 		</c:if>
-		
+
 		<!-- if user is logged in show user's page link -->
 		<c:if test="${username ne 'anonymousUser' or username == 'null'}">
 			<li style="float: right"><a href="/userpage"> <c:out
@@ -26,6 +28,6 @@
 				page" />
 			</a></li>
 		</c:if>
-		
+
 	</ul>
 </div>
