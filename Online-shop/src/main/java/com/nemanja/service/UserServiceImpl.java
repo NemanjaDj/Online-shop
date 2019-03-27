@@ -27,16 +27,24 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void saveUser(User user) {
+		if(userRoleDao.findByUser(user)== null) {
 		UserRole userrole = new UserRole(user, "ROLE_USER");
 		Set<UserRole> roles = user.getUserRole();
 		roles.add(userrole);
 		user.setUserRole(roles);
+		}
 		userdao.save(user);
+		
 	}
 
 	@Override
 	public User findByUsername(String username) {
 		return userdao.findByUsername(username);
+	}
+
+	@Override
+	public void removeUser(String username) {
+		userdao.removeUser(username);
 	}
 	
 }

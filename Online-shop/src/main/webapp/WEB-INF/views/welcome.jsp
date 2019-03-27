@@ -15,11 +15,20 @@
 	<p>New spring collection is available now</p>
 
 	<!-- Slide show  -->
-
+	<table id="welcomeTable">
+	<tr>
+	<td>
 	<div class="slideshow">
 		<img class="mySlides" src="images/nike_lebronXVI.jpg" >
 		<img class="mySlides" src="images/nike_lebronXVAshes.jpg" >
 	</div>
+	</td>
+	<td class="SneakersType">
+		<a href="/sneakers/filterSearch?brand=all&type=lifestyle&price=300"><img class="welcomeImg" src="images/lifestyle.jpg"></a>
+		<a href="/sneakers/filterSearch?brand=all&type=sport&price=300"><img class="welcomeImg" src="images/sport.jpg"></a>
+	</td>
+	</tr>
+	</table>
 </div>
 
 <script>

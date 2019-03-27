@@ -48,4 +48,10 @@ public class SneakersServiceImpl implements SneakersService {
 		return sneakersDao.findByName(name);
 	}
 
+
+	@Override
+	public Sneakers findById(int id) {
+		return sneakersDao.findById(id);
+	}
+
 }

@@ -4,35 +4,11 @@
 
 <div class="container">
 
-	<!-- left vertical menu -->
-
-	<div class="vertical_list">
-		<table id="filter-table">
-			<th><label>Your profile</label></th>
-			<th><label> <a href="#">Edit</a></label></th>
-			<tr>
-				<td><label>Username</label></td>
-				<td>${username}</td>
-			</tr>
-			<tr>
-				<td><label>Email</label></td>
-				<td>blank</td>
-			</tr>
-			<tr>
-				<td>Remove all option</td>
-			</tr>
-
-		</table>
-
-	</div>
-
-	<!-- User's list of cart items -->
-
-	<div class="card_sneakers">
+	<div class="cart_sneakers">
 		<form:form action="${pageContext.request.contextPath}/userpage"
 			method="POST">
-			<h3>Your cart items</h3>
-			<table class="list-sneakers" id="table">
+			<h3 style="text-align: center">Your cart items</h3>
+			<table class="cart-sneakers" id="table">
 				<tr>
 					<th></th>
 					<th>Brand</th>
@@ -59,7 +35,7 @@
 					<td>total price:</td>
 					<td id="sum"></td>
 					<td><input type="button" value="Order now"
-						class="cart_buttons" /></td>
+						class="cart_buttons" onclick="alert('Order is sent!')"/></td>
 				</tr>
 				
 			</table>

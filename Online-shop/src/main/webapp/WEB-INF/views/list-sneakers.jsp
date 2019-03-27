@@ -67,8 +67,14 @@
 					<td>${tempSneakers.type}</td>
 					<td>${tempSneakers.name}</td>
 					<td>${tempSneakers.price}$</td>
+					
 					<c:if test="${username ne 'anonymousUser'}">
-					<td><button type="submit" name="sneakersname" value="${tempSneakers.name}" class="cart_buttons">add to cart</button></td>
+					<td><button type="submit" name="sneakersname" value="${tempSneakers.name}" 
+					class="cart_buttons">add to cart</button></td>
+					</c:if>
+					
+					<c:if test="${username == 'admin'}">
+					<td><a type="button" href="/sneakers/update?id=${tempSneakers.id}" class="cart_buttons">update</a></td>
 					</c:if>
 				</tr>
 			</c:forEach>

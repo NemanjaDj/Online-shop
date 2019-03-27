@@ -31,7 +31,7 @@
 			</tr>
 			<tr>
 				<td>
-				<a type="button"  href="/" class="buttons" style="float: left">Back</a>
+				<a type="button"  href="/" style="float: left" class="buttons">Back</a>
 				<button style="float: right">Login</button>
 				</td>
 			</tr>

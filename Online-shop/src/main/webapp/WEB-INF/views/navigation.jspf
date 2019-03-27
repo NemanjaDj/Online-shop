@@ -5,7 +5,7 @@
 		<li><a href="/sneakers/">Sneakers</a></li>
 
 		<c:if test="${username == 'admin'}">
-			<li><a href="/adminRoom/">Admin room</a></li>
+			<li><a href="/adminRoom/">Admin tools</a></li>
 		</c:if>
 
 		<!-- if user is not logged in show log in link -->
@@ -24,8 +24,7 @@
 		<!-- if user is logged in show user's page link -->
 		<c:if test="${username ne 'anonymousUser' or username == 'null'}">
 			<li style="float: right"><a href="/userpage"> <c:out
-						value="${username}'s
-				page" />
+						value="Cart" />
 			</a></li>
 		</c:if>
 

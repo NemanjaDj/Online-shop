@@ -14,7 +14,8 @@ div {
 }
 
 .container {
-	height: 100%;
+	height: auto;
+	position: relative;
 }
 
 button {
@@ -36,24 +37,84 @@ button:hover {
 	background-color: #111;
 }
 
+/* --------------- user-page --------------------------*/
 
+.cart_sneakers{
+	padding-bottom: 5%;
+}
+.cart-sneakers{
+	margin: auto;
+}
+
+/*--------------------- end user-page ---------------------*/
 /* ------------  welcome page  ------------------------ */
 .slideshow{
-	max-width: 800px;
-	height: 500px;
+	width: 80%;
+	height: 100%;
 }
 .slideshow img{
 	width: 100%;
-	height: 100%;
-}
-.sneakersimages{
-	width: 80px;
-	height: 50px;
+	height: 600px;
 }
 
+.SneakersType{
+	width: 40%;
+	height: 400px;
+}
+
+.SneakersType img{
+	width: 100%;
+	height: 280px;
+	padding: 10px;
+}
+
+.slider {
+	-webkit-appearance: none; /* change default slide line */
+	appearance: none;
+	width: 100%; 
+	height: 25px; 
+	background: #bac5d6; 
+	outline: none;
+	opacity: 0.7; /* lower focus, so when hover is better focused */
+	}
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+#welcomeTable{
+	width: 100%;
+	height: 80%;
+}
+
+#welcomeTable td{
+	padding: 20px;
+}
 
 /* ------------  end welcome page  ------------------------ */
-/* ---- list-sneakers.jsp css */
+/* ----------- admin page ----------------------------- */
+
+.adminTable{
+	margin: auto;
+	width: 80%;
+	height: 80%;
+}
+
+.adminTable td{
+	padding: 10px;
+	width: 100%;
+	height: 100%;
+}
+.adminTable img{
+	width: 600px;
+	height: 600px;
+}
+
+.tableofusers{
+	margin: auto;
+}
+
+/* ------------------------ end admin page --------------------- */
+/* ---- list-sneakers.jsp -------------------------------------- */
 .vertical_list {
 	content-align: center;
 	height: 100%;
@@ -77,6 +138,8 @@ select {
 
 .sneakers-div {
 	width: 100%;
+	height: 80%;
+	padding-bottom: 5%;
 }
 
 .freeText {
@@ -99,24 +162,18 @@ select {
 	background-color: #111;
 }
 
-.slider {
-	-webkit-appearance: none; /* change default slide line */
-	appearance: none;
-	width: 100%; 
-	height: 25px; 
-	background: #bac5d6; 
-	outline: none;
-	opacity: 0.7; /* lower focus, so when hover is better focused */
-	}
-.slider:hover {
-  opacity: 1; /* Fully shown on mouse-over */
+
+.sneakersimages{
+	width: 80px;
+	height: 50px;
 }
 
-/* ----------------------------------------------------- */
-/* ------------- footer.jsp ---------------------------- */
+/* ----------------  list-sneakers.jsp  ---------------------- */
+/* ----------------  footer.jsp  ---------------------------- */
 .footer {
-	height: 40px;
-	position: absolute;
+	
+	height: 5%;
+	position: fixed;
 	bottom: 0;
 	width: 100%;
 	background-color: #333;

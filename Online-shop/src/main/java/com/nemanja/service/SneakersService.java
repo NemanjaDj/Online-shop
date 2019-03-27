@@ -15,4 +15,6 @@ public interface SneakersService {
 	public List<Sneakers> filterSearch(String brand, String type, String price);
 
 	public void addSneakers(Sneakers newSneakers);
+	
+	public Sneakers findById(int id);
 }

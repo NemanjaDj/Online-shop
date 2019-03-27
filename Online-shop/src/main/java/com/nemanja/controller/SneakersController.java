@@ -8,6 +8,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,6 +47,24 @@ public class SneakersController {
 		return "list-sneakers";
 	}
 
+	@GetMapping("/update")
+	public String updateSneakers(@RequestParam("id") int id, ModelMap model) {
+		Sneakers sneakers = sneakersService.findById(id);
+		
+		model.addAttribute("newSneakers", sneakers);
+		return "add-sneakers";
+	}
+	
+	@PostMapping("/update")
+	public String updateSneakers(@ModelAttribute("newSneakers") Sneakers sneakers, BindingResult result) {
+		if(result.hasErrors()) {
+			return "add-sneakers";
+		}
+		sneakersService.addSneakers(sneakers);
+		return "redirect:/sneakers/";
+	}
+	
+	
 	// user adds sneakers to cart 
 	
 	@RequestMapping(value="/", method=RequestMethod.POST, params={"sneakersname"})
@@ -62,6 +82,8 @@ public class SneakersController {
 		return "redirect:/sneakers/";
 	}
 
+	// advanced search methods
+	
 	@GetMapping("/sneakers_search")
 	public String sneakersSearch(Model m, @RequestParam("freeText") String freeText) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
