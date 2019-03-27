@@ -7,8 +7,6 @@ Web application for sneakers sale. Application has welcome page, sneakers page w
 
 
 In develop:
-Admin views and functions,
-User will be able to edit his profile informations,
 Redesign views (css).
 
 
