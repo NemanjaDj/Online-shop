@@ -112,6 +112,17 @@ button:hover {
 .tableofusers{
 	margin: auto;
 }
+.addCredit{
+	float: left;
+}
+#selectUser{
+	width: 140px;
+	height: 30px;
+}
+#addCredit{
+	width: 135px;
+	height: 20px;
+}
 
 /* ------------------------ end admin page --------------------- */
 /* ---- list-sneakers.jsp -------------------------------------- */

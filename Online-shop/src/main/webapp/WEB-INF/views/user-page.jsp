@@ -5,9 +5,9 @@
 <div class="container">
 
 	<div class="cart_sneakers">
-		<form:form action="${pageContext.request.contextPath}/userpage"
-			method="POST">
+		<form:form action="${pageContext.request.contextPath}/userpage">
 			<h3 style="text-align: center">Your cart items</h3>
+			<h3 style="text-align: center">Your credit: ${userCredit}$</h3>
 			<table class="cart-sneakers" id="table">
 				<tr>
 					<th></th>
@@ -24,8 +24,8 @@
 						<td>${tempuserSneakers.type}</td>
 						<td>${tempuserSneakers.name}</td>
 						<td>${tempuserSneakers.price}</td>
-						<td><button type="submit" name="sneakersname"
-								value="${tempuserSneakers.name}" class="cart_buttons">remove</button></td>
+						<td><a type="button" href="/removeUserSneakers?name=${tempuserSneakers.name}"
+						 class="cart_buttons">remove</a></td>
 					</tr>
 				</c:forEach>
 				<tr>
@@ -33,9 +33,9 @@
 					<td></td>
 					<td></td>
 					<td>total price:</td>
-					<td id="sum"></td>
-					<td><input type="button" value="Order now"
-						class="cart_buttons" onclick="alert('Order is sent!')"/></td>
+					<td id="sum">${sumItems}</td>
+					<td><button value="${username}"
+						class="cart_buttons" name="order" onclick="alert('Order is sent!')">Order</button></td>
 				</tr>
 				
 			</table>
@@ -43,14 +43,4 @@
 	</div>
 
 </div>
-<script type="text/javascript">
-// count total sum of cart items
-let rows = document.querySelectorAll("table tr td:nth-child(5)");
-let sum = 0;
-for (let i = 0; i < rows.length-1; i++) {
-    sum += Number(rows[i].textContent);
-}
-
-document.getElementById("sum").textContent = sum;
-</script>
 <%@ include file="footer.jspf"%>

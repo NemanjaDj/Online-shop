@@ -3,8 +3,6 @@ package com.nemanja.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -39,43 +37,42 @@ public class AdminController {
 			return "add-sneakers";
 		}
 		sneakersService.addSneakers(newSneakers);
-		return "redirect:/adminRoom";
+		return "redirect:/adminRoom/";
 	}
 
 	@GetMapping("/addSneakers")
 	public String newSneakersForm(Model themodel) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String name = auth.getName(); // get logged in username
 
-		themodel.addAttribute("username", name);
 		themodel.addAttribute("newSneakers", new Sneakers());
 		return "add-sneakers";
 	}
 
 	@GetMapping("/")
 	public String showAdminRoom(Model themodel) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String name = auth.getName(); // get logged in username
-
-		themodel.addAttribute("username", name);
 		return "adminRoom";
 	}
 
 	@GetMapping("/listOfUsers")
 	public String listOfUsers(Model model) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String name = auth.getName(); // get logged in username
 
 		List<User> users = userService.findAll();
 		model.addAttribute("userlist", users);
-		model.addAttribute("username", name);
 		return "user-list";
 	}
 
-	@PostMapping("/removeUser")
-	public String removeUser(@RequestParam("removeUser") String username) {
+	@PostMapping("/listOfUsers")
+	public String updateUserCredit(@RequestParam("credit") int credit, @RequestParam("user") String username ) {
+		
+		userService.updateUserCredit(credit, username);
+		
+		return "redirect:/adminRoom/listOfUsers";
+	}
+	
+	@GetMapping("/removeUser")
+	public String removeUser(@RequestParam("username") String username) {
 		userRoleService.removeUserRole(userService.findByUsername(username));
 		userService.removeUser(username);
 		return "redirect:/adminRoom/listOfUsers";
 	}
+	
 }

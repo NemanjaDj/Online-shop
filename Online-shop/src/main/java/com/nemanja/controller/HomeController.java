@@ -29,36 +29,47 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String welcomePage(Model themodel) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String name = auth.getName(); // get logged in username
 
-		themodel.addAttribute("username", name);
+		themodel.addAttribute("username", loggedUsername());
 		return "welcome";
 	}
 
 	// List of user's cart items
 	@GetMapping("/userpage")
 	public String userPage(Model themodel) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String name = auth.getName(); // get logged in username
-		themodel.addAttribute("username", name);
-		User user = userservice.findByUsername(name.toLowerCase());
+
+		themodel.addAttribute("username", loggedUsername());
+
+		User user = userservice.findByUsername(loggedUsername().toLowerCase());
 		Set<Sneakers> usersneakers = user.getSneakers();
 		themodel.addAttribute("usercardsneakers", usersneakers);
+		themodel.addAttribute("sumItems", userservice.sumCartItems(loggedUsername()));
+		themodel.addAttribute("userCredit", user.getCredit()); 
 		return "user-page";
 	}
 
 	@PostMapping("/userpage")
-	public String removeFromlist(@RequestParam("sneakersname") String sneakersname) {
+	public String orderSneakers() {
+		
+		userservice.buySneakers(loggedUsername());
+		
+		return "redirect:/userpage";
+	}
+	
+	@GetMapping("/removeUserSneakers")
+	public String removeFromList(@RequestParam String name) {	
+		Sneakers sneakers = sneakersService.findByName(name);
+		userservice.removeUserSneakersFromCart(loggedUsername(), sneakers);
+		
+		return "redirect:/userpage";
+	}
+
+	// return logged in username
+	
+	public String loggedUsername() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName(); // get logged in username
-		User user = userservice.findByUsername(username.toLowerCase());
-		Sneakers tike = sneakersService.findByName(sneakersname);
-		Set<Sneakers> sneakers = user.getSneakers();
-		sneakers.remove(tike);
-		user.setSneakers(sneakers);
-		userservice.saveUser(user);
-		return "redirect:/userpage";
+		return username;
 	}
 
 }

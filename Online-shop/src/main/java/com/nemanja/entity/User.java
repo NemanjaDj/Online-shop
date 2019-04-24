@@ -28,8 +28,8 @@ public class User {
 	@Column(name = "password", length = 120)
 	@Size(min = 4, max = 60, message = "password size must be between 4 and 16")
 	private String password;
-	@Column(name = "enabled")
-	private boolean enabled;
+	@Column(name="credit")
+	private int credit = 300;
 	@OneToMany(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
 			CascadeType.REFRESH }, mappedBy = "user")
 	private Set<UserRole> userRole = new HashSet<>();
@@ -44,38 +44,22 @@ public class User {
 	public User() {
 	}
 
-	public User(String username, String email, String password, Set<UserRole> userRole) {
-		this.username = username;
-		this.email = email;
-		this.password = password;
-		this.enabled = true;
-		this.userRole = userRole;
-	}
-
-	public User(String username, String password, Set<Sneakers> sneakers, String email) {
-		this.username = username;
-		this.email = email;
-		this.password = password;
-		this.enabled = true;
-		this.sneakers = sneakers;
-	}
-
-	public User(String username, String password, Set<UserRole> userRole) {
-		this.username = username;
-		this.password = password;
-		this.enabled = true;
-		this.userRole = userRole;
-	}
-
 	public User(String name, String email, String password) {
 		this.username = name;
 		this.email = email;
 		this.password = password;
-		this.enabled = true;
 	}
 
 	// Getters & Setters
 
+	public int getCredit() {
+		return credit;
+	}
+
+	public void setCredit(int credit) {
+		this.credit = credit;
+	}
+	
 	public String getUsername() {
 		return username;
 	}
@@ -98,14 +82,6 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
 	}
 
 	public Set<UserRole> getUserRole() {

@@ -37,11 +37,9 @@ public class SneakersController {
 	// list all sneakers from database
 	@GetMapping("/")
 	public String showSneakers(Model theModel) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String username = auth.getName(); // get logged in username
 
 		List<Sneakers> sneakers = sneakersService.getSneakers();
-		theModel.addAttribute("username", username);
+		theModel.addAttribute("username", loggedUsername());
 		theModel.addAttribute("sneakers", sneakers);
 
 		return "list-sneakers";
@@ -69,11 +67,8 @@ public class SneakersController {
 	
 	@RequestMapping(value="/", method=RequestMethod.POST, params={"sneakersname"})
 	public String addToCart(@RequestParam("sneakersname") String sneakersname) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String name = auth.getName(); // get logged in username
-
 		
-			User user = userservice.findByUsername(name.toLowerCase());
+			User user = userservice.findByUsername(loggedUsername().toLowerCase());
 			Sneakers tempsneakers = sneakersService.findByName(sneakersname);
 			Set<Sneakers> userSneakers = user.getSneakers();
 			userSneakers.add(tempsneakers);
@@ -86,10 +81,8 @@ public class SneakersController {
 	
 	@GetMapping("/sneakers_search")
 	public String sneakersSearch(Model m, @RequestParam("freeText") String freeText) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String name = auth.getName(); // get logged in username
 
-		m.addAttribute("username", name);
+		m.addAttribute("username", loggedUsername());
 
 		m.addAttribute("sneakers", sneakersService.SearchByName(freeText));
 		return "list-sneakers";
@@ -98,14 +91,18 @@ public class SneakersController {
 	@GetMapping("/filterSearch")
 	public String filterSneakers(Model theModel, @RequestParam("brand") String brand, @RequestParam("type") String type,
 			@RequestParam("price") String price) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String name = auth.getName(); // get logged in username
 
-		theModel.addAttribute("username", name);
+		theModel.addAttribute("username", loggedUsername());
 
 		theModel.addAttribute("sneakers", sneakersService.filterSearch(brand, type, price));
 
 		return "list-sneakers";
 	}
 
+	public String loggedUsername() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username = auth.getName(); // get logged in username
+		return username;
+	}
+	
 }

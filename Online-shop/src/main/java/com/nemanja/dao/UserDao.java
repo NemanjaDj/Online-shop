@@ -23,4 +23,10 @@ public interface UserDao extends JpaRepository<User, Integer> {
 	@Modifying
 	@Query("DELETE FROM User u WHERE u.username=:username")
 	public void removeUser(@Param("username") String username);
+	
+	@Transactional
+	@Modifying
+	@Query("UPDATE User u SET u.credit = :credit WHERE u.username = :username")
+	public void updateUserCredit(@Param("credit") int credit, @Param("username") String username);
+	
 }
